@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" width="device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}"></rel>   
+        
+    </head>
+    <body>
+        <div>
+            <h1>Weather app</h1>
+        </div>
+        <div>
+            <form method="POST" action="/">
+
+                <label for="latitude">Latitude :</label>
+                <input type="text" name="latitude">
+
+                <label for="longitude">Longitude :</label>
+                <input type="text"name=longitude>
+
+                <button type="submit">Get Weather</button>
+
+            </form>
+
+        </div>
+
+        <div>
+            {% if temp_celsius %}
+                <p> temperature :{{temp_celsius}} c</p>
+                <p> Weather     :{{weather}} </p>
+                <p> City        :{{city_name}}    </p>
+                <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="Weather Icon">
+
+            {% endif %}
+            {%if error_message%}
+              <p>error :{{error_message}}</p>
+            {% endif %}
+        </div>
+        
+    </body>
+
+</html>
